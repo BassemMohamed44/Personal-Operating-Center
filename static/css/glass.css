@@ -1,0 +1,36 @@
+.glass-card,
+.widget-card,
+.modal-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.widget-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.3), 0 0 18px var(--accent-glow);
+}
+
+.edit-mode .widget-card {
+  cursor: grab;
+  outline: 2px dashed var(--accent);
+  outline-offset: 2px;
+}
+.edit-mode .widget-card:active { cursor: grabbing; }
+
+.resize-handle {
+  position: absolute; 
+  width: 16px; 
+  height: 16px; 
+  bottom: 4px; 
+  inset-inline-end: 4px;
+  cursor: nwse-resize; 
+  opacity: 0.5;
+}
+.widget-card { 
+  position: relative; 
+}

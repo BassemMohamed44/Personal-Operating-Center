@@ -1,0 +1,20 @@
+<div class="widget-card wide" data-widget="file_manager">
+  <div class="widget-head">
+    <i data-feather="hard-drive"></i><span>File manager</span>
+    <select id="fmDriveSelect" class="fm-drive-select"></select>
+    <button class="icon-btn head-action" id="fmUpBtn" title="go up"><i data-feather="arrow-up"></i></button>
+    <button class="icon-btn" id="fmOpenNativeBtn" title="open in file manager"><i data-feather="external-link"></i></button>
+  </div>
+  <div class="widget-body">
+    <div id="fmBreadcrumb" class="fm-breadcrumb"></div>
+
+    <div class="fm-toolbar">
+      <button class="btn btn-glass small" id="fmNewFolderBtn"><i data-feather="folder-plus"></i> new folder</button>
+      <button class="btn btn-glass small" id="fmUploadBtn"><i data-feather="upload"></i> upload file</button>
+      <input type="file" id="fmUploadInput" hidden multiple>
+      <button class="btn btn-glass small" id="fmRefreshBtn"><i data-feather="refresh-cw"></i></button>
+    </div>
+
+    <div id="fmList" class="fm-list"></div>
+  </div>
+</div>

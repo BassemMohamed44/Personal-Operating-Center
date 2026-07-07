@@ -1,0 +1,21 @@
+<div class="widget-card" data-widget="app_health">
+  <div class="widget-head">
+    <i data-feather="activity"></i><span>App Health</span>
+    <button class="icon-btn head-action" id="appHealthRefreshBtn" title="refresh"><i data-feather="refresh-cw"></i></button>
+  </div>
+  <div class="widget-body">
+    <div id="watchdogOfflineHint" class="empty-hint hidden">
+      Watchdog is not working now. Run <code>watchdog.py</code> instead of <code>app.py</code> to enable monitoring and automatic recovery.
+    </div>
+    <div id="appHealthStats">
+      <div class="ah-row"><span>App state</span><b id="appHealthState">--</b></div>
+      <div class="ah-row"><span>Uptime since last restart</span><b id="appHealthUptime">--</b></div>
+      <div class="ah-row"><span>Number of restarts</span><b id="appHealthRestarts">--</b></div>
+      <div class="ah-row"><span>Last restart reason</span><b id="appHealthLastReason">--</b></div>
+    </div>
+    <div class="control-grid" style="margin-top:12px;">
+      <button class="btn btn-glass" id="appSoftRestartBtn"><i data-feather="refresh-cw"></i> Normal restart</button>
+      <button class="btn btn-danger" id="appForceRestartBtn"><i data-feather="zap"></i> force restart (Watchdog)</button>
+    </div>
+  </div>
+</div>

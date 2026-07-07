@@ -10,26 +10,6 @@ Built entirely with Python (Flask + WebSocket) without any JavaScript framework 
 
 ---
 
-## Screenshots
-- POC_Theme_Ampled <br>
-    <img src="Screenshots/POC_Theme_Ampled.png" alt="POC_Theme_Ampled">
-- POC_Theme_Cyberpunk <br>
-    <img src="Screenshots/POC_Theme_Cyberpunk.png" alt="POC_Theme_Cyberpunk">
-- POC_Theme_DarkBlue <br>
-    <img src="Screenshots/POC_Theme_DarkBlue.png" alt="POC_Theme_DarkBlue">
-- POC_Theme_Hacker <br>
-    <img src="Screenshots/POC_Theme_Hacker.png" alt="POC_Theme_Hacker">
-- POC_Theme_Light <br>
-    <img src="Screenshots/POC_Theme_Light.png" alt="POC_Theme_Light">
--  POC_Theme_Nature <br>
-    <img src="Screenshots/POC_Theme_Nature.png" alt="POC_Theme_Nature">
--  POC_Theme_Ocean <br>
-    <img src="Screenshots/POC_Theme_Ocean.png" alt="POC_Theme_Ocean">
--  POC_Theme_Sunset <br>
-    <img src="Screenshots/POC_Theme_Sunset.png" alt="POC_Theme_Sunset">
-  
-
-
 ## Features
 
 ### Interface

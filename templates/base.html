@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>{% block title %}Personal Operating Center{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/themes.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/glass.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-dot"></span>
+        <span class="logo-text">POC</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/" class="nav-item active" data-tip="Dashboard"><i data-feather="grid"></i><span>Dashboard</span></a>
+        <a href="/settings" class="nav-item" data-tip="Settings"><i data-feather="settings"></i><span>Settings</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <span id="connStatus" class="conn-dot offline" title="Connection status"></span>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <button class="icon-btn" id="toggleSidebar"><i data-feather="menu"></i></button>
+        <div class="topbar-title">{% block header_title %}Personal Operating Center{% endblock %}</div>
+        <div class="topbar-actions">
+          <button class="icon-btn" id="themeToggleBtn" title="Toggle theme"><i data-feather="moon"></i></button>
+          <div id="miniClock" class="mini-clock">--:--:--</div>
+        </div>
+      </header>
+
+      <main class="content">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+  </div>
+
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/websocket.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  {% block scripts %}{% endblock %}
+  <script>feather.replace();</script>
+</body>
+</html>

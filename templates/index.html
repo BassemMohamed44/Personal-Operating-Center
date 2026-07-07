@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block header_title %}Dashboard{% endblock %}
+{% block content %}
+<div class="toolbar">
+  <button class="btn btn-glass" id="editLayoutBtn"><i data-feather="move"></i> Edit Layout</button>
+  <button class="btn btn-glass" id="widgetManagerBtn"><i data-feather="plus-square"></i> Widget Manager</button>
+</div>
+
+<div id="grid" class="widget-grid"></div>
+
+<template id="tpl-clock">{% include "widgets/clock.html" %}</template>
+<template id="tpl-date">{% include "widgets/date.html" %}</template>
+<template id="tpl-system_monitor">{% include "widgets/system_monitor.html" %}</template>
+<template id="tpl-processes">{% include "widgets/processes.html" %}</template>
+<template id="tpl-tasks">{% include "widgets/tasks.html" %}</template>
+<template id="tpl-notes">{% include "widgets/notes.html" %}</template>
+<template id="tpl-projects">{% include "widgets/projects.html" %}</template>
+<template id="tpl-windows_control">{% include "widgets/windows_control.html" %}</template>
+<template id="tpl-notifications">{% include "widgets/notifications.html" %}</template>
+<template id="tpl-quotes">{% include "widgets/quotes.html" %}</template>
+<template id="tpl-prayer_times">{% include "widgets/prayer_times.html" %}</template>
+<template id="tpl-azkar">{% include "widgets/azkar.html" %}</template>
+<template id="tpl-stopwatch">{% include "widgets/stopwatch.html" %}</template>
+<template id="tpl-countdown">{% include "widgets/countdown.html" %}</template>
+<template id="tpl-calendar">{% include "widgets/calendar.html" %}</template>
+<template id="tpl-file_manager">{% include "widgets/file_manager.html" %}</template>
+<template id="tpl-app_health">{% include "widgets/app_health.html" %}</template>
+
+<div id="fmPreviewModal" class="modal hidden">
+  <div class="modal-box glass-card">
+    <div class="modal-header">
+      <h3 id="fmPreviewName">--</h3>
+      <button class="icon-btn" id="fmPreviewClose"><i data-feather="x"></i></button>
+    </div>
+    <img id="fmPreviewImg" src="" alt="" style="max-width:100%; border-radius:10px;">
+  </div>
+</div>
+
+<div id="fmPromptModal" class="modal hidden">
+  <div class="modal-box glass-card small">
+    <h3 id="fmPromptTitle">Enter</h3>
+    <input type="text" id="fmPromptInput" class="text-input" placeholder="Name">
+    <div class="modal-actions">
+      <button class="btn btn-glass" id="fmPromptCancel">Cancel</button>
+      <button class="btn btn-primary" id="fmPromptConfirm">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<div id="prayerCityModal" class="modal hidden">
+  <div class="modal-box glass-card small">
+    <h3>Choose your city</h3>
+    <input type="text" id="prayerCityInput" class="text-input" placeholder="City (example: Cairo)">
+    <input type="text" id="prayerCountryInput" class="text-input" placeholder="Country (example: Egypt)" style="margin-top:8px;">
+    <div class="modal-actions">
+      <button class="btn btn-glass" id="prayerCityCancel">Cancel</button>
+      <button class="btn btn-primary" id="prayerCitySave">Save</button>
+    </div>
+  </div>
+</div>
+
+<div id="widgetManagerModal" class="modal hidden">
+  <div class="modal-box glass-card">
+    <div class="modal-header">
+      <h3>Widget Manager</h3>
+      <button class="icon-btn" id="closeWidgetManager"><i data-feather="x"></i></button>
+    </div>
+    <div id="widgetManagerList" class="widget-manager-list"></div>
+  </div>
+</div>
+
+<div id="pinModal" class="modal hidden">
+  <div class="modal-box glass-card small">
+    <h3>Enter PIN</h3>
+    <input type="password" id="pinInput" class="text-input" placeholder="PIN">
+    <div class="modal-actions">
+      <button class="btn btn-glass" id="pinCancel">Cancel</button>
+      <button class="btn btn-danger" id="pinConfirm">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<div id="notifSettingsModal" class="modal hidden">
+  <div class="modal-box glass-card">
+    <div class="modal-header">
+      <h3>Notification Sources</h3>
+      <button class="icon-btn" id="closeNotifSettings"><i data-feather="x"></i></button>
+    </div>
+
+    <div class="notif-source-block">
+      <div class="notif-source-title">
+        <label class="switch"><input type="checkbox" id="notifTelegramEnabled"><span class="slider"></span></label>
+        <span>Telegram</span>
+      </div>
+      <input type="text" id="notifTelegramToken" class="text-input" placeholder="Bot Token (from BotFather)">
+      <button class="btn btn-glass small" id="notifTelegramTestBtn">Test Connection</button>
+    </div>
+
+    <div class="notif-source-block">
+      <div class="notif-source-title">
+        <label class="switch"><input type="checkbox" id="notifEmailEnabled"><span class="slider"></span></label>
+        <span>Email (IMAP)</span>
+      </div>
+      <input type="text" id="notifEmailHost" class="text-input" placeholder="IMAP Host (example: imap.gmail.com)">
+      <input type="number" id="notifEmailPort" class="text-input" placeholder="Port (993)" value="993">
+      <input type="text" id="notifEmailUser" class="text-input" placeholder="Email">
+      <input type="password" id="notifEmailPassword" class="text-input" placeholder="App Password">
+      <button class="btn btn-glass small" id="notifEmailTestBtn">Test Connection</button>
+    </div>
+
+    <div class="notif-source-block">
+      <div class="notif-source-title">
+        <label class="switch"><input type="checkbox" id="notifYoutubeEnabled"><span class="slider"></span></label>
+        <span>YouTube</span>
+      </div>
+      <input type="text" id="notifYoutubeChannels" class="text-input" placeholder="Channel IDs (UCxxxx,UCyyyy)">
+      <button class="btn btn-glass small" id="notifYoutubeTestBtn">Test Connection</button>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-primary" id="notifSettingsSaveBtn">Save Settings</button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/grid.js') }}"></script>
+<script src="{{ url_for('static', filename='js/widget_manager.js') }}"></script>
+<script src="{{ url_for('static', filename='js/pin.js') }}"></script>
+<script src="{{ url_for('static', filename='js/widgets/clock.js') }}"></script>
+<script src="{{ url_for('static', filename='js/widgets/system.js') }}"></script>
+<script src="{{ url_for('static', filename='js/widgets/tasks.js') }}"></script>
+<script src="{{ url_for('static', filename='js/widgets/notes.js') }}"></script>
+<script src="{{ url_for('static', filename='js/widgets/projects.js') }}"></script>
+<script src="{{ url_for('static', filename='js/widgets/windows_control.js') }}"></script>
+<script src="{{ url_for('static', filename='js/widgets/prayer_times.js') }}"></script>
+<script src="{{ url_for('static', filename='js/widgets/azkar.js') }}"></script>
+<script src="{{ url_for('static', filename='js/widgets/quotes.js') }}"></script>
+<script src="{{ url_for('static', filename='js/widgets/stopwatch.js') }}"></script>
+<script src="{{ url_for('static', filename='js/widgets/countdown.js') }}"></script>
+<script src="{{ url_for('static', filename='js/widgets/calendar.js') }}"></script>
+<script src="{{ url_for('static', filename='js/widgets/notifications.js') }}"></script>
+<script src="{{ url_for('static', filename='js/widgets/file_manager.js') }}"></script>
+<script src="{{ url_for('static', filename='js/widgets/app_health.js') }}"></script>
+{% endblock %}

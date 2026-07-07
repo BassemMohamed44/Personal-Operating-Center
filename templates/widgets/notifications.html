@@ -1,0 +1,15 @@
+<div class="widget-card" data-widget="notifications">
+  <div class="widget-head">
+    <i data-feather="bell"></i><span>Notifications</span>
+    <span id="notifUnreadBadge" class="notif-badge hidden">0</span>
+    <button class="icon-btn head-action" id="notifRefreshBtn" title="Refresh now"><i data-feather="refresh-cw"></i></button>
+    <button class="icon-btn" id="notifSettingsBtn" title="Sources settings"><i data-feather="settings"></i></button>
+  </div>
+  <div class="widget-body">
+    <div class="notif-actions-row">
+      <button class="btn btn-glass small" id="notifMarkAllBtn">Mark all as read</button>
+      <button class="btn btn-glass small" id="notifClearBtn">Clear all</button>
+    </div>
+    <div id="notifList" class="notif-list"></div>
+  </div>
+</div>

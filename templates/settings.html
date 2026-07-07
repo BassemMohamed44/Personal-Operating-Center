@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block header_title %}Settings{% endblock %}
+{% block content %}
+<div class="settings-page glass-card">
+  <h2>General Settings</h2>
+
+  <div class="settings-section">
+    <h3>Theme</h3>
+    <div id="themeGrid" class="theme-grid">
+      <button class="theme-swatch" data-theme="dark">DarkBlue</button>
+      <button class="theme-swatch" data-theme="amoled">AMOLED</button>
+      <button class="theme-swatch" data-theme="hacker">Hacker</button>
+      <button class="theme-swatch" data-theme="cyberpunk">Cyberpunk</button>
+      <button class="theme-swatch" data-theme="nature">Nature</button>
+      <button class="theme-swatch" data-theme="ocean">Ocean</button>
+      <button class="theme-swatch" data-theme="sunset">Sunset</button>
+      <button class="theme-swatch" data-theme="light">Light</button>
+    </div>
+  </div>
+
+  <div class="settings-section">
+    <h3>Language</h3>
+    <select id="languageSelect" class="text-input">
+      <option value="ar">العربية</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+
+  <div class="settings-section">
+    <h3>Animations</h3>
+    <label class="switch">
+      <input type="checkbox" id="animationsToggle" checked>
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="settings-section">
+    <h3>Refresh Rate (ms)</h3>
+    <input type="number" id="refreshRateInput" class="text-input" value="2000" step="500" min="500">
+  </div>
+
+  <div class="settings-section">
+    <h3>Widget Visibility</h3>
+    <div id="settingsWidgetVisibility" class="widget-manager-list"></div>
+  </div>
+
+  <div class="settings-section">
+    <h3>Backup</h3>
+    <button class="btn btn-glass" id="exportSettingsBtn"><i data-feather="download"></i> Export Settings</button>
+    <button class="btn btn-glass" id="importSettingsBtn"><i data-feather="upload"></i> Import Settings</button>
+    <input type="file" id="importFileInput" accept="application/json" hidden>
+  </div>
+
+  <button class="btn btn-primary" id="saveSettingsBtn">Save Settings</button>
+  <button class="btn btn-danger" id="resetSettingsBtn">Reset All Settings</button>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/settings_page.js') }}"></script>
+{% endblock %}

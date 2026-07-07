@@ -1,0 +1,8 @@
+Flask==3.0.3
+Flask-SQLAlchemy==3.1.1
+Flask-SocketIO==5.3.6
+python-socketio==5.11.2
+psutil==6.0.0
+python-dotenv==1.0.1
+requests==2.32.3
+pywin32==306; sys_platform == "win32"
