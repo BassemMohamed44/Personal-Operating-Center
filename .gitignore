@@ -1,0 +1,40 @@
+# --- Secrets / environment ---
+.env
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv/
+
+# --- App data (personal, machine-specific) ---
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+logs/*.log
+logs/watchdog.log
+logs/projects/*.log
+logs/screenshots/*.png
+
+# Keep the folder structure but ignore its generated contents
+!data/.gitkeep
+!logs/.gitkeep
+!logs/projects/.gitkeep
+!logs/screenshots/.gitkeep
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# --- Your own projects tracked by the Project Manager widget ---
+# (uncomment if you keep sub-projects inside ./projects and don't want
+# their content committed to this repo)
+# projects/*/
